@@ -298,7 +298,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.KnowGo.my;
+				PRODUCT_BUNDLE_IDENTIFIER = com.knowgo.my;
 				PRODUCT_NAME = KnowGo;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -326,7 +326,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.KnowGo.my;
+				PRODUCT_BUNDLE_IDENTIFIER = com.knowgo.my;
 				PRODUCT_NAME = KnowGo;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
