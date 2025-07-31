@@ -8,6 +8,7 @@ import {
     Switch,
     Platform, // For platform-specific styles
     Linking, // For opening URLs
+    Share, // <-- Added for Share functionality
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useDispatch, useSelector } from 'react-redux';
@@ -38,15 +39,36 @@ const SettingsScreen = ({ navigation }) => {
         // The state will be updated in the Redux store, and the useSelector will re-render this component
     };
 
-    const handleShareApp = () => {
-        // Implement sharing functionality here (e.g., using Share API)
-        console.log('Share the app functionality goes here.');
-        // Example: Share.share({ message: 'Check out this awesome app!' });
+    const handleShareApp = async () => { // <-- Made asynchronous
+        try {
+            const result = await Share.share({
+                message: 'Try out this awesome app! [Your app link here]', // <-- Updated message
+                url: 'https://your-app-store-link.com', // <-- Add your actual app link here
+                title: 'Share App', // <-- Title for the share dialog
+            });
+
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    // Shared with activity type of result.activityType
+                    console.log(`App shared via: ${result.activityType}`);
+                } else {
+                    // Shared
+                    console.log('App successfully shared.');
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // Dismissed
+                console.log('Share dialog dismissed.');
+            }
+        } catch (error) {
+            console.error('Error attempting to share the app:', error.message);
+            // You could add a user-facing error message here, e.g., using Toast
+        }
     };
+
 
     const handleTermsOfUse = () => {
         // Open a URL for terms of use
-        Linking.openURL('https://yourwebsite.com/terms'); // Replace with your actual terms URL
+        Linking.openURL('https://www.termsfeed.com/live/60a52fae-9032-4d2d-85bd-a330e29fb302'); // Replace with your actual terms URL
     };
 
     return (
@@ -109,7 +131,7 @@ const SettingsScreen = ({ navigation }) => {
                         <Text style={styles.settingText}>Share the app</Text>
                         {/* Using a simple text arrow or an icon if available */}
                         <Text style={styles.shareIconText}>↗️</Text>
-                        {/* If using react-native-vector-icons for share icon: */}
+                        {/* If using react-native-vector-icons for share: */}
                         {/* <Feather name="share" size={24} color="#FFF" /> */}
                     </TouchableOpacity>
                 </View>
