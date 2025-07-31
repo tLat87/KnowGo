@@ -8,10 +8,10 @@ workflows:
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.knowgo.my
+        bundle_identifier: com.knowgochik.my
       vars:
-        APP_STORE_APPLE_ID: 6749073650
-        BUNDLE_ID: "com.knowgo.my"
+        APP_STORE_APPLE_ID: 6749361901
+        BUNDLE_ID: "com.knowgochik.my"
         XCODE_WORKSPACE: "KnowGo.xcworkspace"
         XCODE_SCHEME: "KnowGo"
     scripts:
